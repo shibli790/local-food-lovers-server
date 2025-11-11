@@ -289,7 +289,11 @@ app.post('/favorites/:reviewId', authRequired, async (req, res) => {
 // Favorite remove 
 app.delete('/favorites/:reviewId', authRequired, async (req, res) => {
   try {
-   
+    const reviewId = req.params.reviewId;
+    const r = await Favorites.deleteOne({
+      userEmail: req.user.email,
+      reviewId,
+    });
     res.json({ deleted: r.deletedCount === 1 });
   } catch (e) {
     res.status(400).json({ message: 'Invalid review id' });
