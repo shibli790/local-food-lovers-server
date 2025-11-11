@@ -351,4 +351,4 @@ app.get('/my-favorites', authRequired, async (req, res) => {
 // Fallback more..
 app.use((req, res) => res.status(404).json({ message: 'Route not found' }));
 
-app.listen(PORT, () => console.log(`API on :${PORT}`));
+
