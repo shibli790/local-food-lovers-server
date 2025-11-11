@@ -119,7 +119,7 @@ app.get('/featured-reviews', async (req, res) => {
   }
 });
 
-// All reviews
+// All review 
 app.get('/reviews', async (req, res) => {
   try {
     const { page = 1, limit = 12, search = '' } = req.query;
@@ -137,7 +137,7 @@ app.get('/reviews', async (req, res) => {
       .toArray();
     res.json({ total, page: p, limit: l, items });
   } catch (e) {
-    res.status(500).json({ message: 'Failed to load reviews' });
+    res.status(500).json({ message: 'Failed to load reviews ' });
   }
 });
 
