@@ -273,7 +273,7 @@ app.post('/favorites/:reviewId', authRequired, async (req, res) => {
       { _id: new ObjectId(reviewId) },
       { projection: { _id: 1 } }
     );
-    if (!exists) return res.status(404).json({ message: 'Review not found' });
+    if (!exists) return res.status(404).json({ message: 'Review not ' });
     const doc = { userEmail: req.user.email, reviewId, createdAt: new Date() };
     await Favorites.updateOne(
       { userEmail: doc.userEmail, reviewId: doc.reviewId },
