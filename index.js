@@ -301,52 +301,7 @@ app.delete('/favorites/:reviewId', authRequired, async (req, res) => {
 });
 
 // My favorites 
-app.get('/my-favorites', authRequired, async (req, res) => {
-  try {
-    const pipeline = [
-      { $match: { userEmail: req.user.email } },
-      { $sort: { createdAt: -1 } },
-      {
-        $lookup: {
-          from: 'reviews',
-          localField: 'reviewId',
-          foreignField: '_id',
-          let: { reviewIdObj: { $toObjectId: '$reviewId' } },
-          pipeline: [
-            {
-              $match: {
-                $expr: { $eq: ['$_id', { $toObjectId: '$$reviewId' }] },
-              },
-            },
-          ],
-          as: 'reviewDoc',
-        },
-      },
-      { $unwind: '$reviewDoc' },
-      { $project: { _id: 0, review: '$reviewDoc', createdAt: 1 } },
-    ];
-  } catch (e) {}
-  try {
-    const favs = await Favorites.aggregate([
-      { $match: { userEmail: req.user.email } },
-      { $addFields: { reviewObjId: { $toObjectId: '$reviewId' } } },
-      {
-        $lookup: {
-          from: 'reviews',
-          localField: 'reviewObjId',
-          foreignField: '_id',
-          as: 'reviewDoc',
-        },
-      },
-      { $unwind: '$reviewDoc' },
-      { $sort: { createdAt: -1 } },
-      { $project: { _id: 0, createdAt: 1, review: '$reviewDoc' } },
-    ]).toArray();
-    res.json(favs);
-  } catch (e) {
-    res.status(500).json({ message: 'Failed to load favorites' });
-  }
-});
+
 
 // Fallback more..
 app.use((req, res) => res.status(404).json({ message: 'Route not found' }));
