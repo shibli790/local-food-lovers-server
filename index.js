@@ -209,7 +209,7 @@ app.get('/my-reviews', authRequired, async (req, res) => {
       .toArray();
     res.json(docs);
   } catch (e) {
-    res.status(500).json({ message: 'Failed to load my reviews' });
+    res.status(500).json({ message: 'Failed to load my review' });
   }
 });
 
