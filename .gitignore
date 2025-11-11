@@ -1,0 +1,5 @@
+node_modules
+.env
+fire-base-p.json
+
+.vercel
