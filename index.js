@@ -31,7 +31,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 const DB_NAME = process.env.DB_NAME || 'local_food_lovers';
 
 if (!MONGODB_URI) {
-  console.error('Missing MONGODB_URI');
+  console.error('Missings MONGODB_URI');
   process.exit(1);
 }
 

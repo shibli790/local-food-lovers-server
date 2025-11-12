@@ -11,11 +11,12 @@ Express + MongoDB + Firebase Admin backend for the **Local Food Lovers Network**
 - CORS allowlist, Helmet, Morgan
 - Vercel-ready, single-file `index.js`
 
-## Env
-See `.env.example`
+
 
 ## Run
 ```bash
 npm i
 npm run dev
 ```
+
+
