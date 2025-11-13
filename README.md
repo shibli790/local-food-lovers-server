@@ -11,8 +11,7 @@ Express + MongoDB + Firebase Admin backend for the **Local Food Lovers Network**
 - CORS allowlist, Helmet, Morgan
 - Vercel-ready, single-file `index.js`
 
-## 🔗 Live Demo
-**Vercel:** https://local-food-lovers-networks.netlify.app/  
+ 
 
 ## Run
 ```bash
